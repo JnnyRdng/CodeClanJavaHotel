@@ -1,11 +1,13 @@
 public class Booking {
 
-    private Bedroom bedroom;
+    private final Bedroom bedroom;
     private int nights;
+    private int totalCost;
 
     public Booking(Bedroom bedroom, int nights) {
         this.bedroom = bedroom;
         this.nights = nights;
+        this.totalCost = this.totalCost();
     }
 
     public Bedroom getRoom() {
@@ -18,5 +20,14 @@ public class Booking {
 
     public void setNights(int nights) {
         this.nights = nights;
+        this.totalCost = this.totalCost();
+    }
+
+    private int totalCost() {
+        return this.bedroom.getCost() * this.nights;
+    }
+
+    public int getTotalCost() {
+        return this.totalCost;
     }
 }
