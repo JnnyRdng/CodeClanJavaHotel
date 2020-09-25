@@ -52,4 +52,43 @@ public class Hotel {
         this.conferenceRooms.add(conferenceRoom);
     }
 
+    public boolean checkIntoBedroom(Guest guest) {
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.hasCapacity()) {
+                bedroom.addGuest(guest);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkIntoConferenceRoom(Guest guest) {
+        for (ConferenceRoom conferenceRoom : this.conferenceRooms) {
+            if (conferenceRoom.hasCapacity()) {
+                conferenceRoom.addGuest(guest);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkOutFromBedroom(Guest guest) {
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.getGuests().contains(guest)) {
+                bedroom.removeGuest(guest);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkOutFromConferenceRoom(Guest guest) {
+        for (ConferenceRoom conferenceRoom : this.conferenceRooms) {
+            if (conferenceRoom.getGuests().contains(guest)) {
+                conferenceRoom.removeGuest(guest);
+                return true;
+            }
+        }
+        return false;
+    }
 }
