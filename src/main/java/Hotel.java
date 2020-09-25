@@ -5,11 +5,13 @@ public class Hotel {
     private String name;
     private ArrayList<Bedroom> bedrooms;
     private ArrayList<ConferenceRoom> conferenceRooms;
+    private ArrayList<Booking> bookings;
 
     public Hotel(String name) {
         this.name = name;
         this.bedrooms = new ArrayList<>();
         this.conferenceRooms = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
     public String getName() {
@@ -90,5 +92,17 @@ public class Hotel {
             }
         }
         return false;
+    }
+
+    public ArrayList<Booking> getBookings() {
+        return this.bookings;
+    }
+
+    public int bookingsCount() {
+        return this.bookings.size();
+    }
+
+    public void addBooking(Booking booking) {
+        this.bookings.add(booking);
     }
 }
