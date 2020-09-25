@@ -14,8 +14,10 @@ public abstract class Room {
         return this.guests;
     }
 
-    public void setGuests(ArrayList<Guest> guests) {
-        this.guests = guests;
+    public void addGuests(ArrayList<Guest> guests) {
+        if (this.hasCapacity(guests)) {
+            this.guests = guests;
+        }
     }
 
     public void addGuest(Guest guest) {
@@ -34,6 +36,10 @@ public abstract class Room {
 
     public boolean hasCapacity() {
         return this.guestCount() < this.capacity;
+    }
+
+    public boolean hasCapacity(ArrayList<Guest> guests) {
+        return (this.capacity - this.guestCount()) >= guests.size();
     }
 
     public int getCapacity() {

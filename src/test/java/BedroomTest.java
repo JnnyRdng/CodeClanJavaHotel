@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BedroomTest {
 
@@ -78,7 +78,7 @@ public class BedroomTest {
         ArrayList<Guest> guests = new ArrayList<>();
         guests.add(guest1);
         guests.add(guest2);
-        bigRoom.setGuests(guests);
+        bigRoom.addGuests(guests);
         assertEquals(2, bigRoom.guestCount());
     }
 
@@ -86,5 +86,25 @@ public class BedroomTest {
     public void getCostPerNight() {
         assertEquals(25, bedroom.getCost());
         assertEquals(75, bigRoom.getCost());
+    }
+
+    @Test
+    public void roomHasCapacityForMultipleGuests() {
+        ArrayList<Guest> guests = new ArrayList<>();
+        guests.add(guest1);
+        guests.add(guest2);
+        assertTrue(bigRoom.hasCapacity(guests));
+        bigRoom.addGuests(guests);
+        assertEquals(2, bigRoom.guestCount());
+    }
+
+    @Test
+    public void roomDoesntHaveCapacityForMultipleGuests() {
+        ArrayList<Guest> guests = new ArrayList<>();
+        guests.add(guest1);
+        guests.add(guest2);
+        bedroom.addGuests(guests);
+        assertFalse(bedroom.hasCapacity(guests));
+        assertEquals(0, bedroom.guestCount());
     }
 }
