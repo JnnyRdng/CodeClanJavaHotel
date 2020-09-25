@@ -2,7 +2,7 @@ public enum RoomType {
 
     SINGLE(1),
     DOUBLE(2),
-    TWIN(3),
+    TWIN(2),
     FAMILY(4),
     PENTHOUSE(2);
 
