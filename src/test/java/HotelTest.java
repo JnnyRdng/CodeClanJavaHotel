@@ -161,4 +161,12 @@ public class HotelTest {
         hotel.addBooking(booking);
         assertEquals(1, hotel.bookingsCount());
     }
+
+    @Test
+    public void canBookRoom() {
+        Booking newBooking = hotel.bookRoom(bedroom, 3);
+        assertEquals(3, newBooking.getNights());
+        assertEquals(120, newBooking.getTotalCost());
+        assertEquals(2, newBooking.getRoom().getCapacity());
+    }
 }

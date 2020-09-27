@@ -105,4 +105,9 @@ public class Hotel {
     public void addBooking(Booking booking) {
         this.bookings.add(booking);
     }
+
+    public Booking bookRoom(Bedroom bedroom, int nights) {
+        return new Booking(bedroom, nights);
+    }
+
 }

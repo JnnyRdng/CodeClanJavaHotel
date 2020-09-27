@@ -99,7 +99,7 @@ public class BedroomTest {
     }
 
     @Test
-    public void roomDoesntHaveCapacityForMultipleGuests() {
+    public void roomDoesNotHaveCapacityForMultipleGuests() {
         ArrayList<Guest> guests = new ArrayList<>();
         guests.add(guest1);
         guests.add(guest2);
