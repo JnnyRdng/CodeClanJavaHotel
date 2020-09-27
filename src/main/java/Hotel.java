@@ -125,4 +125,14 @@ public class Hotel {
         this.diningRooms.put(diningRoom.getName(), diningRoom);
     }
 
+    public ArrayList<Bedroom> getEmptyBedrooms() {
+        ArrayList<Bedroom> emptyBedrooms = new ArrayList<>();
+        for (Bedroom bedroom : this.bedrooms) {
+            if (bedroom.guestCount() == 0) {
+                emptyBedrooms.add(bedroom);
+            }
+        }
+        return emptyBedrooms;
+    }
+
 }

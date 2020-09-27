@@ -190,4 +190,17 @@ public class HotelTest {
         assertEquals("Nandos", returnedDiningRoom.getName());
         assertEquals(10, returnedDiningRoom.getCapacity());
     }
+
+    @Test
+    public void noEmptyBedrooms() {
+        assertEquals(0, hotel.getEmptyBedrooms().size());
+    }
+
+    @Test
+    public void oneEmptyBedroom() {
+        bedroom2.addGuest(guest);
+        hotel.buildBedroom(bedroom2);
+        hotel.buildBedroom(bedroom);
+        assertEquals(1, hotel.getEmptyBedrooms().size());
+    }
 }
