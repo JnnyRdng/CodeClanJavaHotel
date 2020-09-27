@@ -15,6 +15,7 @@ public class HotelTest {
     private ConferenceRoom conferenceRoom;
     private ConferenceRoom conferenceRoom2;
     private Guest guest;
+    private DiningRoom diningRoom;
 
     @Before
     public void before() {
@@ -26,6 +27,7 @@ public class HotelTest {
         conferenceRoom = new ConferenceRoom("Grand Hall", 100);
         conferenceRoom2 = new ConferenceRoom("Broom Cupboard", 1);
         guest = new Guest("Alan");
+        diningRoom = new DiningRoom("Nandos", 10);
     }
 
     @Test
@@ -168,5 +170,24 @@ public class HotelTest {
         assertEquals(3, newBooking.getNights());
         assertEquals(120, newBooking.getTotalCost());
         assertEquals(2, newBooking.getRoom().getCapacity());
+    }
+
+    @Test
+    public void emptyDiningRoomsHashMap() {
+        assertEquals(0, hotel.getDiningRooms().size());
+    }
+
+    @Test
+    public void addDiningRoomToHashMap() {
+        hotel.addDiningRoom(diningRoom);
+        assertEquals(1, hotel.getDiningRooms().size());
+    }
+
+    @Test
+    public void getDiningRoomByName() {
+        hotel.addDiningRoom(diningRoom);
+        DiningRoom returnedDiningRoom = hotel.getDiningRoomByName("Nandos");
+        assertEquals("Nandos", returnedDiningRoom.getName());
+        assertEquals(10, returnedDiningRoom.getCapacity());
     }
 }
