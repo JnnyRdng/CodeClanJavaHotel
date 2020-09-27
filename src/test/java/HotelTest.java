@@ -203,4 +203,15 @@ public class HotelTest {
         hotel.buildBedroom(bedroom);
         assertEquals(1, hotel.getEmptyBedrooms().size());
     }
+
+    @Test
+    public void addGuestsOnlyToEmptyBedroom() {
+        hotel.buildBedroom(bedroom);
+        hotel.buildBedroom(bedroom2);
+        hotel.buildBedroom(bedroom2);
+        hotel.checkIntoBedroom(guest);
+        hotel.checkIntoBedroom(guest);
+        assertEquals(1, bedroom.guestCount());
+        assertEquals(1, bedroom2.guestCount());
+    }
 }

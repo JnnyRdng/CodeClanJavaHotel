@@ -58,7 +58,7 @@ public class Hotel {
     }
 
     public boolean checkIntoBedroom(Guest guest) {
-        for (Bedroom bedroom : this.bedrooms) {
+        for (Bedroom bedroom : this.getEmptyBedrooms()) {
             if (bedroom.hasCapacity()) {
                 bedroom.addGuest(guest);
                 return true;
